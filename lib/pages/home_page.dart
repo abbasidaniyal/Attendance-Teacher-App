@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:scoped_model/scoped_model.dart';
+
 import './class_selector_page.dart';
+
+import '../scoped_model/teacher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -28,28 +32,34 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           ),
-          RaisedButton(
-            child: Text("Submmit"),
-            onPressed: () {
-              print(teacherID);
+          Builder(
+            builder: (context) {
+              return RaisedButton(
+                child: Text("Submit"),
+                onPressed: () {
+                  print(teacherID);
 
-              //SEND AND CHECK WITH DB
-              if (true) {
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(
-                    builder: (context) {
-                      return ClassSelector();
-                    },
-                  ),
-                );
-              } else {
-                Scaffold.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text("Sorry. Please Check your Teacher ID"),
-                  ),
-                );
-              }
+                  TeacherModel model = ScopedModel.of(context);
+                  model.teacherLogin(teacherID).then((bool response) {
+                    if (response) {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) {
+                            return ClassSelector();
+                          },
+                        ),
+                      );
+                    } else {
+                      Scaffold.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("Sorry. Please Check your Teacher ID"),
+                        ),
+                      );
+                    }
+                  });
+                },
+              );
             },
           )
         ],
