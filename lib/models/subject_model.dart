@@ -1,6 +1,7 @@
 class Subject {
-  String sID;
+  int sID;
   String subjectName;
+  String isLive;
 
-  Subject(this.sID, this.subjectName);
+  Subject({this.sID, this.subjectName, this.isLive});
 }
