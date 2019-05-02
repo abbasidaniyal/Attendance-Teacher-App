@@ -66,7 +66,8 @@ class _ClassSelectorState extends State<ClassSelector> {
                                 .startAttendance(selectedSubject)
                                 .then((responseBool) {
                               if (responseBool) {
-                                Navigator.pushReplacement(
+                                Navigator.pop(context);
+                                Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {

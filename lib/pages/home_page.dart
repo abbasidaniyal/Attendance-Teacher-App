@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
 
                   TeacherModel model = ScopedModel.of(context);
                   model.teacherLogin(teacherID).then((bool response) {
-                    if (response) {
+                    if (true) {
                       Navigator.push(
                         context,
                         CupertinoPageRoute(
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                     } else {
                       Scaffold.of(context).showSnackBar(
                         SnackBar(
-                          content: Text("Sorry. Please Check your Teacher ID"),
+                          content: Text("Sorry. Please Check your Teacher ID or check internet connection"),
                         ),
                       );
                     }

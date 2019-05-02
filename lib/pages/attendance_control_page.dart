@@ -33,7 +33,6 @@ class _AttendanceControlPageState extends State<AttendanceControlPage> {
                 height: 50.0,
               ),
               RaisedButton(
-                
                 child: Text("Stop Attendance"),
                 onPressed: () {
                   showDialog(
@@ -49,6 +48,7 @@ class _AttendanceControlPageState extends State<AttendanceControlPage> {
                               TeacherModel model = ScopedModel.of(context);
                               model.stopAttendance().then((responseBool) {
                                 if (responseBool) {
+                                  Navigator.pop(context);
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './pages/home_page.dart';
 import 'package:scoped_model/scoped_model.dart';
-
+import './pages/splash_screen_page.dart';
 import './scoped_model/teacher.dart';
 
 void main() => runApp(MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.indigo,
         ),
-        home: HomePage(),
+        home: WelcomePage(),
       ),
     );
   }

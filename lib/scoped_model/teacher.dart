@@ -18,7 +18,7 @@ class TeacherModel extends Model {
       int response = res.statusCode;
       print(response);
       response = 200;
-      if (response == 200)  {
+      if (response == 200) {
         var a = json.decode(res.body);
         print(a);
         int teacherId = a["teacher_id"];
@@ -50,11 +50,16 @@ class TeacherModel extends Model {
           } else {
             isTeacherLoaded = false;
           }
-        });
+        }).catchError((onError) {
+          print(onError);
+        }).timeout(Duration(seconds: 30));
       } else {
         isTeacherLoaded = false;
       }
-    });
+    }).catchError((onError) {
+      print(onError.toString());
+    }).timeout(Duration(seconds: 30));
+
     return isTeacherLoaded;
   }
 
@@ -71,7 +76,9 @@ class TeacherModel extends Model {
       if (response == 200) {
         isAttendanceLive = true;
       }
-    });
+    }).catchError((onError){
+
+    }).timeout(Duration(seconds: 30));
 
     return isAttendanceLive;
   }
@@ -85,7 +92,9 @@ class TeacherModel extends Model {
       if (response == 200) {
         isAttendanceLive = false;
       }
-    });
+    }).catchError((onError){
+
+    }).timeout(Duration(seconds: 30));
 
     return !isAttendanceLive;
   }

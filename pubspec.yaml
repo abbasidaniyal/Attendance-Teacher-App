@@ -19,6 +19,7 @@ environment:
 dependencies:
   scoped_model: 
   http:
+  splashscreen:
   flutter:
     sdk: flutter
 
