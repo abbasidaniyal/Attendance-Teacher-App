@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import '../scoped_model/teacher.dart';
 import './class_selector_page.dart';
+import './attendance_status.dart';
 
 class AttendanceControlPage extends StatefulWidget {
   @override
@@ -14,8 +15,44 @@ class _AttendanceControlPageState extends State<AttendanceControlPage> {
     return ScopedModelDescendant<TeacherModel>(
         builder: (context, child, model) {
       return Scaffold(
+        drawer: Drawer(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 30.0,
+              ),
+              InkWell(
+                child: Text(
+                  "Home",
+                  textScaleFactor: 1.5,
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return AttendanceControlPage();
+                  }));
+                },
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              InkWell(
+                child: Text(
+                  "Attendance Status",
+                  textScaleFactor: 1.5,
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                    return AttendanceStatus();
+                  }));
+                },
+              ),
+            ],
+          ),
+        ),
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          // automaticallyImplyLea?ding: false,
           title: Text("Attendance Control Page"),
         ),
         body: Container(

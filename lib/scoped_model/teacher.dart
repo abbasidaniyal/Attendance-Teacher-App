@@ -13,7 +13,7 @@ class TeacherModel extends Model {
   Future<bool> teacherLogin(String teacherID) async {
     await http
         .get(
-            "http://13.232.66.83:8000/students/which-teacher/${int.parse(teacherID)}")
+            "http://13.233.160.117:8000/students/which-teacher/${int.parse(teacherID)}")
         .then((http.Response res) async {
       int response = res.statusCode;
       print(response);
@@ -24,7 +24,7 @@ class TeacherModel extends Model {
         int teacherId = a["teacher_id"];
         print(teacherId);
         await http
-            .get("http://13.232.66.83:8000/students/subject-teacher/$teacherId")
+            .get("http://13.233.160.117:8000/students/subject-teacher/$teacherId")
             .then((http.Response resSub) {
           print(resSub.body);
           if (resSub.statusCode == 200) {
@@ -69,7 +69,7 @@ class TeacherModel extends Model {
     });
 
     await http.patch(
-        "http://13.232.66.83:8000/students/attendace-status/${liveAttendanceSubject.sID}",
+        "http://13.233.160.117:8000/students/attendance-status/${liveAttendanceSubject.sID}",
         body: {"is_live": "L"}).then((http.Response res) {
       int response = res.statusCode;
       response = 200;
@@ -85,7 +85,7 @@ class TeacherModel extends Model {
 
   Future<bool> stopAttendance() async {
     await http.patch(
-        "http://13.232.66.83:8000/students/attendace-status/${liveAttendanceSubject.sID}",
+        "http://13.233.160.117:8000/students/attendance-status/${liveAttendanceSubject.sID}",
         body: {"is_live": "NL"}).then((http.Response res) {
       int response = res.statusCode;
       response = 200;

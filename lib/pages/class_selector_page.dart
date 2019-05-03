@@ -62,6 +62,8 @@ class _ClassSelectorState extends State<ClassSelector> {
                           child: Text("Yes"),
                           onPressed: () {
                             TeacherModel model = ScopedModel.of(context);
+                            
+
                             model
                                 .startAttendance(selectedSubject)
                                 .then((responseBool) {
